@@ -1,14 +1,8 @@
 <?php 
-function genPass ($length){
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\()*+,-./:;<=>?@[\]^_`{|}~';
-    $password = '';
-    $lengthCharacters = strlen($characters);
-    for ($i = 0; $i < $length; $i++) {
-        $index = rand(0, $lengthCharacters - 1);
-        $password .= $characters[$index];
-}
-    return $password;
-}
+
+session_start();
+
+include __DIR__ . '/function.php';
 
 if (isset($_GET['length'])){
     //controllo
@@ -33,10 +27,14 @@ if (isset($_GET['length'])){
 </head>
 <body>
 
+<h1 class="text-center">
+    genera password sicura
+</h1>
+
 <form action="index.php" method="GET">
     <label for="length">Lunghezza della Password:</label>
     <input type="number" id="length" name="length" min="4" max="30" required>
-    <input type="submit" value="Genera Password">
+    <input class="" type="submit" value="Genera Password">
   </form>
     
 </body>
